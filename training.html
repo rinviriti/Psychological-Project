@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <title>DIU-AidBox(Mental Health SUpport System)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+<!--Header Starts-->
+<header class="header">
+    <a href="#" class="logo">DIU-AidBox</a>
+    <nav class="navbar">
+            <a href="landing_page.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="activities.html">Activities</a>
+            <a href="listener.html">Volunteer as a Listener</a>
+            <a href="aboutus.html">About Us</a>
+    </nav>
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </div> 
+</header>
+<!--Header Ends-->
+<!--Home Section Starts-->
+<section class="home" id="home">
+    <div class="content">
+        <h1><b>Training Program to be a Listener</b></h1>
+        <p style="text-align: center;">We are offering to train you as the best and compasionate listener, to support our patients. Enrich Your CV with this great Oppurtunity.</p>
+        <img src="Images/38529263.jpg" style="padding-left: 25rem; height:80%; width:80%;">
+    </div>
+</section>
+<!--Home Section Ends-->
+
+<div class="container">
+    <h2 style="color:rgb(90,134,180); font-size: 2rem; text-align: center;">Welcome to our Listener Training Program!</h2>
+    <p style="font-size: 1.5rem; text-align: center; padding-top: 1rem; padding-bottom: 1rem;">
+        Our training program is designed to help you become a better listener and improve your communication skills.
+        You'll learn valuable techniques and strategies that will benefit you both personally and professionally.
+    </p>
+    <p style="font-size: 1.8rem; text-align: left;">
+        To enroll in the program, please click the button below to open the payment form.
+    </p>
+    <a href="#" id="openPaymentForm" class="btn">Enroll Now</a>
+    &nbsp;&nbsp;
+    <div id="paymentForm" style="display: none;">
+        <h2 style="padding-top: 2rem; text-align: center; font-size: 2rem; font-weight: bolder; color:black">Payment Information</h2>
+        &nbsp;
+        &nbsp;
+        <form id="payment-form" style="height:280px; width:754px; background-color: rgb(209 229 248); padding-left: 20rem;"><br><br>
+            <label for="name" style="font-size: 1.8rem; padding-top: 3rem;">Name:</label>
+            <input type="text" placeholder="write your name" id="name" required>
+            <br><br><br>
+            <fieldset style="width:220px; align-items: center;">
+                <legend style="color:rgb(90,134,180); font-size: 1.8rem;">Select a Payment Method:</legend>             
+                <div style="text-align: center; align-content: center; align-items: center; font-size: 1.1rem;">
+                    <input type="radio"/>
+                    <label>Bkash</label>
+                </div>              
+                <div style="text-align: center; align-content: center; align-items: center; font-size: 1.1rem;">
+                    <input type="radio"/>
+                    <label>Nagad</label>
+                </div>             
+                <div style="text-align: center; align-content: center; align-items: center; font-size: 1.1rem;">
+                    <input type="radio"/>
+                    <label>Rocket</label>
+                </div>
+            </fieldset>   <br><br>         
+            <label for="phone">Enter your phone number:</label>
+            <input type="tel" id="phone" placeholder="Format: +880 11199-21111" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+                <br>
+                <label for="phone">Enter Transaction Number:</label>
+                <input type="text" required>
+            <br>
+            <br>
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" required>
+            <br>
+            <br>
+            <a href="#" class="btn">Submit</a>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    // JavaScript to toggle the visibility of the payment form
+    const openPaymentFormButton = document.getElementById('openPaymentForm');
+    const paymentForm = document.getElementById('paymentForm');
+
+    openPaymentFormButton.addEventListener('click', () => {
+        if (paymentForm.style.display === 'none' || paymentForm.style.display === '') {
+            paymentForm.style.display = 'block';
+        } else {
+            paymentForm.style.display = 'none';
+        }
+    });
+</script>
+
+
+
+    <!--Footer Section Starts-->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h1>Quick Links</h1>
+                <a href="landing_page.html"> <i class="fas fa-chevron-right"></i>Home</a>
+                <a href="doctors.html"> <i class="fas fa-chevron-right"></i>Doctors</a>
+                <a href="appointment.html"> <i class="fas fa-chevron-right"></i>Appointment</a>
+                <a href="blogs.html"> <i class="fas fa-chevron-right"></i>Blogs</a>
+            </div>
+            <div class="box">
+                <h1>Our Services</h1>
+                <a href="counselling.html"> <i class="fas fa-chevron-right"></i>Psychologist Couselling</a>
+                <a href="training.html"> <i class="fas fa-chevron-right"></i>Training Program</a>
+                <a href="chat.html"> <i class="fas fa-chevron-right"></i>Real-Time Crisis Support</a>
+                <a href="self_help.html"> <i class="fas fa-chevron-right"></i>Self-Help Management</a>
+                <a href="workshop.html"> <i class="fas fa-chevron-right"></i>Workshop</a>
+            </div>
+            <div class="box">
+                <h1>Contact Us</h1>
+                <a href="#"> <i class="fas fa-phone"></i>+880 19726-69321</a>
+                <a href="#"> <i class="fas fa-phone"></i>+880 69321-19726</a>
+                <a href="#"> <i class="fas fa-envelope"></i>diuaidbox@diu.bd.edu</a>
+                <a href="#"> <i class="fas fa-envelope"></i>aidboxofficial@gmail.com</a>
+                <a href="#"> <i class="fas fa-map-marker-alt"></i>Dhaka, Bangladesh</a>       
+            </div>
+            <div class="box">
+                <h1>Follow Us</h1>
+                <a href="#"> <i class="fab fa-facebook-f"></i> Facebook </a>
+                <a href="#"> <i class="fab fa-instagram"></i> Instagram  </a>
+                <a href="#"> <i class="fab fa-twitter"></i> Twitter  </a>
+                <a href="#"> <i class="fab fa-linkedin"></i> Linkedin  </a>
+                <a href="#"> <i class="fab fa-telegram"></i> telegram  </a>       
+            </div>
+        </div>
+    </section>
+    <!--Footer Section Ends-->
+
+    <script src="script.js"></script>
+</body>
+</html>

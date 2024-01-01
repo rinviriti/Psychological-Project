@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+}
+.home .content .btn{
+    justify-content: center;
+    align-items: center;
+}
+#chat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+#chat-box {
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(209 229 248);
+    box-shadow: 0 .5rem 1.5rem rgb(90,134,180);
+    border-radius: .5rem;
+}
+
+#chat-messages {
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid rgb(90,134,180);
+    border-radius: .5rem;
+    margin-bottom: 10px;
+}
+
+.message {
+    margin: 5px 0;
+}
+
+#user-input {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid rgb(90,134,180);
+    border-radius: .5rem;
+}
+
+#send-button {
+    margin-top: 10px;
+    padding: 10px 10px;
+    background-color: rgb(90,134,180);
+    color: whitesmoke;
+    cursor: pointer;
+    transition:0.3s; 
+}
+#send-button:hover {
+            background-color: brown; 
+        }
+        .listener-card {
+            text-align: center;
+            background-color: rgb(90,134,180);
+            border: 1px solid rgb(90,134,180);
+            padding: 20px;
+            border-radius: .5rem;
+            box-shadow: 1px 2px 4px whitesmoke;
+            height: 380px;
+            width:1600px;
+        }
+
+        .listener-ratings-container {
+            margin: 20px auto;
+            max-width: 600px;
+            height:250px;
+        }
+
+        .listener-rating {
+            padding: 20px;
+            border-radius: .5rem;
+            background-color: white;
+        }
+        .con{
+            padding-top: 2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgb(90,134,180);
+            border-radius: .5rem;
+        }
+    </style>
+    <title>DIU-AidBox(Mental Health SUpport System)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+<!--Header Starts-->
+<header class="header">
+    <a href="#" class="logo">DIU-AidBox</a>
+    <nav class="navbar">
+            <a href="landing_page.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="activities.html">Activities</a>
+            <a href="volunteer.html">Volunteer as a Listener</a>
+            <a href="aboutus.html">About Us</a>
+    </nav>
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </div> 
+</header>
+<!--Header Ends-->
+<!--Home Section Starts-->
+<section class="home" id="home">
+    <div class="content">
+        <h1><b style="color: rgb(90,134,180);">Our Professionals are Standing By</b></h1>
+        <a href="listener.html" class="btn">Browse Listener</a>
+    </div>
+    <div class="image">
+        <img class="doctor" src="Images/28376679.jpg" alt="">
+    </div>
+</section>
+<!--Home Section Ends-->
+
+<div id="header-container" style="font-size: 3rem; text-align: center;font-weight: bolder; background-color: rgb(209 229 248); height:50px; padding-top: .5rem;"> Chat With Professionals</div>
+    <div id="chat-container" style="height:100%; width:80%; justify-content: center; justify-items: center; align-items: center; align-content: center; padding-left: 37rem; padding-top: 3rem;">
+        <div id="chat-box">
+            <div id="chat-messages"></div>
+            <div><img src="Images/Group Chat-amico.png" alt="" style="height:50%; width:50%;"></div>
+            <input type="text" id="user-input" placeholder="Type your message">
+            <button id="send-button" class="btn">Send</button>
+        </div>
+
+    </div>
+<div class="con"> 
+    <div class="listener-card">
+        <h1 style="color: whitesmoke;">Rate a Professional</h1>
+        <div class="listener-ratings-container">
+            <div class="listener-rating">
+                <form action="">
+                    <label for="rating1">Rating (1-5):</label>
+                    <input type="number" id="rating1" name="rating" min="1" max="5" required>
+                    <label for="comment1">Comments:</label>
+                    <textarea id="comment1" name="comment" rows="4"></textarea>
+                    <a href="#" class="btn">Submit</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        const headerContainer = document.createElement('div');
+        headerContainer.setAttribute('id', 'header-container');
+        document.body.insertBefore(headerContainer, document.body.firstChild);
+
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                headerContainer.innerHTML = data;
+            });
+
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        sendButton.addEventListener('click', sendMessage);
+
+        // Listen for the "Enter" key press in the text input
+        userInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const userMessage = userInput.value;
+            if (userMessage.trim() !== '') {
+                addMessage('You', userMessage);
+                userInput.value = '';
+                setTimeout(() => {
+                    const responseMessage = getResponse(userMessage);
+                    addMessage('Professional', responseMessage);
+                }, 1000);
+            }
+        }
+
+        function addMessage(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getResponse(userMessage) {
+            const responses = {
+    'hello': 'Hello! How can I assist you?',
+    'how are you': 'I am doing well, thank you for asking.',
+    'bye': 'Goodbye! Have a great day.',
+    'psychological medication': 'Psychological medication can be prescribed by a mental health professional to help manage psychological conditions. Its essential to consult with a healthcare provider for personalized guidance.',
+    'anxiety': 'Anxiety is a common mental health issue. If youre experiencing anxiety, consider deep breathing exercises and relaxation techniques. Consult a mental health expert for guidance.',
+    'depression': 'Depression is a serious condition. Its crucial to seek help from a mental health professional. They may recommend therapy or medication.',
+    'medication side effects': 'Medication can have side effects. If youre experiencing adverse effects, contact your healthcare provider immediately.',
+    'therapy options': 'Therapy is an effective treatment for many mental health conditions. Consider cognitive-behavioral therapy (CBT), psychotherapy, or counseling.',
+    'self-care': 'Self-care is vital for mental health. Practice mindfulness, exercise, get enough sleep, and maintain a healthy diet.',
+    'mental health support': 'Support from friends and family can be invaluable. Don’t hesitate to reach out to loved ones during difficult times.',
+    'medication adherence': 'Taking prescribed medication as directed is essential for its effectiveness. Set a routine and use reminders if needed.',
+    'seek professional help': 'If youre struggling with your mental health, dont hesitate to reach out to a mental health professional for guidance and support.',
+    'managing stress': 'Managing stress is crucial for mental well-being. Practice stress-reduction techniques such as yoga and meditation.',
+    'medication adjustments': 'Medication may require adjustments over time. Consult your healthcare provider if you feel its not working optimally.',
+    'mindfulness meditation': 'Mindfulness meditation is a relaxation technique that can help reduce stress and improve mental well-being.',
+    'medication side effects': 'Medication can have side effects. If you experience any, discuss them with your healthcare provider.',
+    'family support': 'Families can be a crucial support system. Openly communicate with your loved ones about your mental health.',
+    'find a therapist': 'To find a therapist, consider online directories or ask for recommendations from your healthcare provider.',
+    'medication concerns': 'If you have concerns about your medication, its essential to discuss them with your healthcare provider.',
+    'therapy benefits': 'Therapy can provide valuable insights and strategies for managing mental health conditions.',
+    'mind-body connection': 'The mind-body connection is powerful. Engage in physical activity to support your mental well-being.',
+    'medication options': 'There are various medication options available. Consult your healthcare provider to determine the best one for you.',
+    'overcoming challenges': 'Overcoming challenges in mental health may require time and patience. Stay committed to your well-being.',
+    'medication effectiveness': 'The effectiveness of medication may vary from person to person. Be patient and communicate with your healthcare provider.',
+    'wellness plan': 'Develop a wellness plan that includes self-care, therapy, and medication management.',
+    'support network': 'A strong support network can be a lifeline during challenging times. Connect with friends, family, and support groups.',
+    'holistic approach': 'Consider a holistic approach to mental health, including lifestyle changes and alternative therapies.',
+    'medication dosage': 'The correct dosage of medication is crucial for its effectiveness. Follow your healthcare providers instructions.',
+    'coping strategies': 'Coping strategies, such as journaling and mindfulness, can be helpful for managing stress and emotions.',
+    'medication questions': 'If you have questions about your medication, dont hesitate to ask your healthcare provider.',
+    'therapy progress': 'Therapy progress may take time. Reflect on your growth and communicate with your therapist.',
+    'mental health advocacy': 'Advocate for mental health awareness and support in your community.',
+    'medication management': 'Effective medication management includes taking your prescribed doses regularly.',
+    'healthy habits': 'Maintain healthy habits, such as regular exercise and a balanced diet, to support your mental health.',
+    'therapy goals': 'Set clear therapy goals with your therapist to track your progress.',
+    'mental health resources': 'Explore mental health resources in your area, including crisis helplines and support groups.',
+    'medication interactions': 'Be aware of potential medication interactions. Inform your healthcare provider about all medications youre taking.',
+    'positive mindset': 'A positive mindset can have a significant impact on mental health. Practice gratitude and positivity.',
+    'therapy sessions': 'Consistent therapy sessions are key to making progress. Keep your appointments.',
+    'emotional support': 'Emotional support from friends and family can help you navigate difficult times.',
+    'medication consistency': 'Consistency in taking your medication is vital for its effectiveness.',
+    'relaxation techniques': 'Explore relaxation techniques such as deep breathing and progressive muscle relaxation.',
+    'self-compassion': 'Practice self-compassion and self-acceptance in your mental health journey.',
+    'therapy benefits': 'Therapy can help you build resilience and develop effective coping strategies.',
+    'mental health education': 'Educate yourself about mental health to better understand your condition and treatment options.',
+    'medication regimen': 'Stick to your prescribed medication regimen to maintain stability.',
+    'professional guidance': 'Professional guidance is essential for managing complex mental health conditions.',
+    'mindfulness practices': 'Mindfulness practices can help you stay grounded and reduce anxiety.',
+    'medication review': 'Regularly review your medication with your healthcare provider to ensure it remains effective.',
+    'stress management': 'Effective stress management can prevent mental health challenges. Find stress-reduction techniques that work for you.',
+    'self-reflection': 'Self-reflection can lead to personal growth and self-awareness.',
+    'therapy support': 'Therapists provide support and guidance in developing a healthier mindset.',
+    'mental health awareness': 'Promote mental health awareness and reduce stigma through open conversations.',
+    'medication withdrawal': 'Do not stop medication abruptly; consult your healthcare provider for a safe withdrawal plan.',
+    'life balance': 'Maintain a balance between work, relationships, and self-care for overall well-being.',
+    'therapy commitment': 'Commit to your therapy sessions and actively engage in the process.',
+    'coping mechanisms': 'Develop coping mechanisms for managing stress and emotional challenges.',
+    'mental health initiatives': 'Participate in mental health initiatives and advocacy efforts in your community.',
+    'medication monitoring': 'Regularly monitor your medications effects and communicate any changes to your healthcare provider.',
+    'supportive community': 'Seek out supportive communities and groups for additional assistance.',
+    'positive self-talk': 'Practice positive self-talk to boost self-esteem and self-worth.',
+    'therapy techniques': 'Therapists use various techniques to help clients work through their concerns.',
+    'mental health acceptance': 'Accepting your mental health journey is a significant step toward healing.',
+    'medication safety': 'Store medication safely and keep it out of reach of children.',
+    'relaxation practices': 'Incorporate relaxation practices into your daily routine for stress relief.',
+    'self-awareness': 'Self-awareness is the foundation of personal growth and self-improvement.',
+    'therapy progress': 'Track your therapy progress and celebrate your achievements along the way.',
+    'mental health advocacy': 'Advocate for improved mental health services and support in your community.',
+    'medication adherence': 'Adhering to your medication plan as prescribed is essential for stability.',
+    'resilience building': 'Building resilience can help you face lifes challenges with greater strength.',
+    'self-care routines': 'Develop self-care routines that nurture your mental and emotional well-being.',
+    'therapy commitment': 'Commit to your therapy journey, even when it gets challenging.',
+    'emotional well-being': 'Prioritize your emotional well-being through self-compassion and self-care.',
+    'mental health education': 'Education is key to understanding your mental health and treatment options.',
+    'medication management': 'Manage your medication effectively by following your healthcare providers guidance.',
+    'supportive relationships': 'Build and maintain supportive relationships with friends and family.',
+    'positive thinking': 'Cultivate a positive mindset to help you overcome obstacles.',
+    'therapy growth': 'Therapy can be a journey of personal growth and self-discovery.',
+    'mental health support': 'Lean on your support network during challenging times.',
+    'medication adjustment': 'Consult your healthcare provider for any necessary adjustments to your medication.',
+    'mindfulness practices': 'Mindfulness practices can enhance your mental well-being and reduce stress.',
+    'coping skills': 'Develop coping skills to navigate lifes ups and downs effectively.',
+    'self-esteem boost': 'Boost your self-esteem through positive affirmations and self-love.',
+    'therapy insights': 'Therapists provide valuable insights and guidance for personal development.',
+    'mental health resilience': 'Resilience is the ability to bounce back from adversity. Build your resilience over time.',
+};
+
+            return responses[userMessage.toLowerCase()] || 'I do not understand. Please ask another question.';
+        }
+    </script>
+
+
+
+
+<!--Footer Section Starts-->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h1>Quick Links</h1>
+                <a href="landing_page.html"> <i class="fas fa-chevron-right"></i>Home</a>
+                <a href="doctors.html"> <i class="fas fa-chevron-right"></i>Doctors</a>
+                <a href="appointment.html"> <i class="fas fa-chevron-right"></i>Appointment</a>
+                <a href="blogs.html"> <i class="fas fa-chevron-right"></i>Blogs</a>
+            </div>
+            <div class="box">
+                <h1>Our Services</h1>
+                <a href="counselling.html"> <i class="fas fa-chevron-right"></i>Psychologist Couselling</a>
+                <a href="training.html"> <i class="fas fa-chevron-right"></i>Training Program</a>
+                <a href="chat.html"> <i class="fas fa-chevron-right"></i>Real-Time Crisis Support</a>
+                <a href="self_help.html"> <i class="fas fa-chevron-right"></i>Self-Help Management</a>
+                <a href="workshop.html"> <i class="fas fa-chevron-right"></i>Workshop</a>
+            </div>
+            <div class="box">
+                <h1>Contact Us</h1>
+                <a href="#"> <i class="fas fa-phone"></i>+880 19726-69321</a>
+                <a href="#"> <i class="fas fa-phone"></i>+880 69321-19726</a>
+                <a href="#"> <i class="fas fa-envelope"></i>diuaidbox@diu.bd.edu</a>
+                <a href="#"> <i class="fas fa-envelope"></i>aidboxofficial@gmail.com</a>
+                <a href="#"> <i class="fas fa-map-marker-alt"></i>Dhaka, Bangladesh</a>       
+            </div>
+            <div class="box">
+                <h1>Follow Us</h1>
+                <a href="#"> <i class="fab fa-facebook-f"></i> Facebook </a>
+                <a href="#"> <i class="fab fa-instagram"></i> Instagram  </a>
+                <a href="#"> <i class="fab fa-twitter"></i> Twitter  </a>
+                <a href="#"> <i class="fab fa-linkedin"></i> Linkedin  </a>
+                <a href="#"> <i class="fab fa-telegram"></i> telegram  </a>       
+            </div>
+        </div>
+    </section>
+    <!--Footer Section Ends-->
+
+    <script src="script.js"></script>
+</body>
+</html>

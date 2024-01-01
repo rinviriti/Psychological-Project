@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DIU-AidBox(Mental Health SUpport System)</title>
+    <style>
+        header {
+            background-color: rgb(90,134,180);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .listener-card {
+            border: 2px solid rgb(90,134,180);
+            border-radius: .5rem;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .listener-card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .form-container {
+            margin-top: 20px;
+            border: 2px solid rgb(90,134,180);
+            border-radius: .5rem;
+        }
+
+        .form-container form {
+            background-color: rgb(209 229 248);
+            padding: 20px;
+            border: 1px solid rgb(90,134,180);
+            border-radius: .5rem;
+            border-radius: 5px;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0;
+            font-size: 1.8rem;
+            font-weight: bolder;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="email"],
+        .form-container select {
+            width: 60%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        .form-container input[type="file"] {
+            width: auto;
+            margin: 5px 0;
+        }
+
+        .form-container input[type="radio"] {
+            margin: 5px 5px 5px 0;
+        }
+        .listener-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .listener-card {
+            flex: 1;
+            border: 1px solid rgb(90,134,180);
+            border-radius: .5rem;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .listener-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .listener-card h2 {
+            font-size: 2rem;
+            color: rgb(90,134,180);
+        }
+
+        .listener-card p {
+            font-size: 1.5rem;
+            color: black;
+        }
+        .listener-rating {
+            background-color: rgb(209 229 248);
+        }
+        .listener-rating label{
+            font-size: 1.5rem;
+            color: black;
+        }
+        .listener-rating textarea{
+            height:50px;
+            width: 800px;
+        }
+        .listener-ratings-container{
+            border: 3px solid rgb(90,134,180);
+            border-radius: .5rem;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+<!--Header Starts-->
+<header class="header">
+    <a href="#" class="logo">DIU-AidBox</a>
+    <nav class="navbar">
+            <a href="landing_page.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="activities.html">Activities</a>
+            <a href="listener.html">Volunteer as a Listener</a>
+            <a href="aboutus.html">About Us</a>
+    </nav>
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </div> 
+</header>
+<!--Header Ends-->
+
+<br><br><br><br><br><br><br>
+
+
+<header>
+    <h1>Volunteer as a Listener</h1>
+</header>
+
+<div class="container">
+    <div class="listener-card">
+        <h2>Browse Listeners</h2>
+        <div class="listener-container">
+            <!-- Listener 1 -->
+            <div class="listener-card">
+                <img src="Images/man.jpg" alt="Listener 1">
+                <h2>Listener 1</h2>
+                <p>Rating: 4.8</p>
+                <p>Experience: 3 years</p>
+                <a href="chat.html" class="btn">Chat Now</a>
+            </div>
+
+            <!-- Listener 2 -->
+            <div class="listener-card">
+                <img src="Images/man2.jpg" alt="Listener 2">
+                <h2>Listener 2</h2>
+                <p>Rating: 4.5</p>
+                <p>Experience: 2 years</p>
+                <a href="chat.html" class="btn">Chat Now</a>
+            </div>
+
+            <!-- Listener 3 -->
+            <div class="listener-card">
+                <img src="Images/man1.jpeg" alt="">
+                <h2>Listener 3</h2>
+                <p>Rating: 4.7</p>
+                <p>Experience: 4 years</p>
+                <a href="chat.html" class="btn">Chat Now</a>
+            </div>
+
+            <!-- Listener 4 -->
+            <div class="listener-card">
+                <img src="Images/man3.jpeg" alt="Listener 4">
+                <h2>Listener 4</h2>
+                <p>Rating: 4.6</p>
+                <p>Experience: 3 years</p>
+                <a href="chat.html" class="btn">Chat Now</a>
+            </div>
+
+            <!-- Listener 5 -->
+            <div class="listener-card">
+                <img src="Images/man4.jpeg" alt="">
+                <h2>Listener 5</h2>
+                <p>Rating: 4.9</p>
+                <p>Experience: 5 years</p>
+                <a href="chat.html" class="btn">Chat Now</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="listener-card">
+        <h2>Apply as a Listener</h2>
+        <img src="Images/listen.jpg" alt="">
+        <div class="form-container">
+            <form action="">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="write your name" name="name" required>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" placeholder="write your age" name="age" required>
+
+                <label for="education">Education Status:</label>
+                <input type="text" id="education" placeholder="write your education level" name="education" required>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" placeholder="write your gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="blood_group">Blood Group:</label>
+                    <input type="text" id="blood_group" placeholder="write your blood group" name="blood_group" required>
+
+                    <label for="cv">Upload CV:Resume</label>
+                    <input type="file" id="cv" placeholder="upload your cv" name="cv" accept=".pdf,.doc,.docx" required>
+
+                    <label for="employment">Employment Type:Part-Time/Full-time</label>
+                    <h3 style="color:black;">Part-Time:<input type="radio" id="part_time" name="employment" value="part-time" required></h3>
+                    <h3 style="color:black;">Full-Time:<input type="radio" id="full_time" name="employment" value="full-time" required></h3>
+                    
+                    <label for="experience">Work Experience (years):</label>
+                    <input type="number" id="experience" name="experience" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="write your emaAIL" name="email" required>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" placeholder="write your phone number" name="phone" required>
+
+                    <input type="submit" value="Apply" class="btn">
+                </form>
+            </div>
+        </div>
+
+        <div class="listener-card">
+            <h2>Rate a Listener</h2>
+            <div class="listener-ratings-container">
+                <!-- Listener 1 Rating -->
+                <div class="listener-rating">
+                    <h2>Listener 1</h2>
+                    <form action="">
+                        <label for="rating1">Rating (1-5):</label>
+                        <input type="number" id="rating1" name="rating" min="1" max="5" required>
+                        <label for="comment1">Comments:</label>
+                        <textarea id="comment1" name="comment" rows="4"></textarea>
+                        <input type="submit" value="Submit" class="btn">
+                    </form>
+                </div>
+        
+                <!-- Listener 2 Rating -->
+                <div class="listener-rating">
+                    <h2>Listener 2</h2>
+                    <form action="">
+                        <label for="rating2">Rating (1-5):</label>
+                        <input type="number" id="rating2" name="rating" min="1" max="5" required>
+                        <label for="comment2">Comments:</label>
+                        <textarea id="comment2" name="comment" rows="4"></textarea>
+                        <input type="submit" value="Submit" class="btn">
+                    </form>
+                </div>
+        
+                <!-- Listener 3 Rating -->
+                <div class="listener-rating">
+                    <h2>Listener 3</h2>
+                    <form action="">
+                        <label for="rating3">Rating (1-5):</label>
+                        <input type="number" id="rating3" name="rating" min="1" max="5" required>
+                        <label for="comment3">Comments:</label>
+                        <textarea id="comment3" name="comment" rows="4"></textarea>
+                        <input type="submit" value="Submit" class="btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+<!--Footer Section Starts-->
+<section class="footer">
+    <div class="box-container">
+        <div class="box">
+            <h1>Quick Links</h1>
+            <a href="landing_page.html"> <i class="fas fa-chevron-right"></i>Home</a>
+            <a href="doctors.html"> <i class="fas fa-chevron-right"></i>Doctors</a>
+            <a href="appointment.html"> <i class="fas fa-chevron-right"></i>Appointment</a>
+            <a href="blogs.html"> <i class="fas fa-chevron-right"></i>Blogs</a>
+        </div>
+        <div class="box">
+            <h1>Our Services</h1>
+            <a href="counselling.html"> <i class="fas fa-chevron-right"></i>Psychologist Couselling</a>
+            <a href="training.html"> <i class="fas fa-chevron-right"></i>Training Program</a>
+            <a href="chat.html"> <i class="fas fa-chevron-right"></i>Real-Time Crisis Support</a>
+            <a href="self_help.html"> <i class="fas fa-chevron-right"></i>Self-Help Management</a>
+            <a href="workshop.html"> <i class="fas fa-chevron-right"></i>Workshop</a>
+        </div>
+        <div class="box">
+            <h1>Contact Us</h1>
+            <a href="#"> <i class="fas fa-phone"></i>+880 19726-69321</a>
+            <a href="#"> <i class="fas fa-phone"></i>+880 69321-19726</a>
+            <a href="#"> <i class="fas fa-envelope"></i>diuaidbox@diu.bd.edu</a>
+            <a href="#"> <i class="fas fa-envelope"></i>aidboxofficial@gmail.com</a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i>Dhaka, Bangladesh</a>       
+        </div>
+        <div class="box">
+            <h1>Follow Us</h1>
+            <a href="#"> <i class="fab fa-facebook-f"></i> Facebook </a>
+            <a href="#"> <i class="fab fa-instagram"></i> Instagram  </a>
+            <a href="#"> <i class="fab fa-twitter"></i> Twitter  </a>
+            <a href="#"> <i class="fab fa-linkedin"></i> Linkedin  </a>
+            <a href="#"> <i class="fab fa-telegram"></i> telegram  </a>       
+        </div>
+    </div>
+</section>
+<!--Footer Section Ends-->
+</body>
+</html>
